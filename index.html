@@ -91,12 +91,13 @@
 
     /* SIDE PROJECTS */
     .projects { padding: 120px 48px; border-top: 1px solid var(--line); }
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); margin-top: 0; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; background: var(--line); max-width: 700px; }
     .project-item { background: var(--paper); padding: 40px 36px; position: relative; }
     .project-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent); color: var(--paper); padding: 4px 10px; margin-bottom: 24px; }
     .project-tag.soon { background: var(--muted); }
     .project-name { font-family: 'DM Serif Display', serif; font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 12px; }
     .project-desc { font-size: 0.9rem; font-weight: 300; line-height: 1.7; color: var(--muted); }
+    .project-placeholder { border: 2px dashed var(--line); background: transparent !important; display: flex; flex-direction: column; justify-content: center; }
     @media (max-width: 900px) { .projects { padding: 80px 24px; } .projects-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -203,6 +204,10 @@
         <div class="project-tag soon">Coming Soon</div>
         <div class="project-name">PokeFlip</div>
         <p class="project-desc">iOS app to scan Pokémon cards with your camera, get instant valuations in EUR and USD, and manage your collection — all in one place.</p>
+      </div>
+      <div class="project-item project-placeholder">
+        <div class="project-name" style="color: var(--line); font-size: 1.2rem;">More on the way...</div>
+        <p class="project-desc">New ideas are always brewing.</p>
       </div>
     </div>
   </section>
