@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ELF Consult — IT Consultancy & Product Management</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --ink: #0f0f0f;
       --paper: #f5f2ed;
@@ -16,28 +16,13 @@
       --muted: #6b6b6b;
       --line: rgba(15,15,15,0.12);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--paper);
       color: var(--ink);
       overflow-x: hidden;
     }
-
-    /* NOISE TEXTURE */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.4;
-    }
-
-    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -47,16 +32,14 @@
       align-items: center;
       padding: 24px 48px;
       border-bottom: 1px solid transparent;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease;
       background: transparent;
     }
-
     nav.scrolled {
-      background: rgba(245,242,237,0.92);
+      background: rgba(245,242,237,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
-
     .nav-logo {
       font-family: 'DM Serif Display', serif;
       font-size: 1.4rem;
@@ -64,9 +47,7 @@
       color: var(--ink);
       text-decoration: none;
     }
-
     .nav-logo span { color: var(--accent); }
-
     .nav-contact {
       font-size: 0.85rem;
       font-weight: 500;
@@ -78,10 +59,7 @@
       padding-bottom: 2px;
       transition: color 0.2s, border-color 0.2s;
     }
-
     .nav-contact:hover { color: var(--accent); border-color: var(--accent); }
-
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -92,7 +70,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero::after {
       content: '';
       position: absolute;
@@ -102,13 +79,11 @@
       background: radial-gradient(circle, rgba(26,60,255,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
-
     .hero-left {
       padding-top: 120px;
       padding-bottom: 80px;
       max-width: 560px;
     }
-
     .hero-tag {
       display: inline-flex;
       align-items: center;
@@ -119,32 +94,21 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 32px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.1s forwards;
     }
-
     .hero-tag::before {
       content: '';
       display: inline-block;
       width: 24px; height: 1px;
       background: var(--accent);
     }
-
     h1 {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(3rem, 5vw, 5rem);
       line-height: 1.0;
       letter-spacing: -0.03em;
       margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
     }
-
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
+    h1 em { font-style: italic; color: var(--accent); }
     .hero-sub {
       font-size: 1.1rem;
       font-weight: 300;
@@ -152,10 +116,7 @@
       color: var(--muted);
       max-width: 440px;
       margin-bottom: 48px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.35s forwards;
     }
-
     .hero-cta {
       display: inline-flex;
       align-items: center;
@@ -168,24 +129,16 @@
       letter-spacing: 0.04em;
       text-decoration: none;
       transition: background 0.2s, transform 0.2s;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.5s forwards;
     }
-
     .hero-cta:hover { background: var(--accent); transform: translateY(-2px); }
-
     .hero-cta svg { transition: transform 0.2s; }
     .hero-cta:hover svg { transform: translateX(4px); }
-
     .hero-right {
       display: flex;
       justify-content: flex-end;
       align-items: center;
       padding-top: 120px;
-      opacity: 0;
-      animation: fadeIn 1s 0.6s forwards;
     }
-
     .hero-card {
       background: var(--ink);
       color: var(--paper);
@@ -194,7 +147,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero-card::before {
       content: '';
       position: absolute;
@@ -203,7 +155,6 @@
       border-radius: 50%;
       background: rgba(26,60,255,0.15);
     }
-
     .hero-card-label {
       font-size: 0.7rem;
       letter-spacing: 0.12em;
@@ -211,11 +162,7 @@
       opacity: 0.5;
       margin-bottom: 32px;
     }
-
-    .hero-card-stat {
-      margin-bottom: 28px;
-    }
-
+    .hero-card-stat { margin-bottom: 28px; }
     .hero-card-num {
       font-family: 'DM Serif Display', serif;
       font-size: 3.5rem;
@@ -223,25 +170,12 @@
       line-height: 1;
       margin-bottom: 6px;
     }
-
-    .hero-card-desc {
-      font-size: 0.85rem;
-      font-weight: 300;
-      opacity: 0.6;
-    }
-
-    .hero-card-divider {
-      height: 1px;
-      background: rgba(245,242,237,0.12);
-      margin: 24px 0;
-    }
-
-    /* SERVICES */
+    .hero-card-desc { font-size: 0.85rem; font-weight: 300; opacity: 0.6; }
+    .hero-card-divider { height: 1px; background: rgba(245,242,237,0.12); margin: 24px 0; }
     .services {
       padding: 120px 48px;
       border-top: 1px solid var(--line);
     }
-
     .section-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -249,7 +183,6 @@
       margin-bottom: 80px;
       align-items: end;
     }
-
     .section-tag {
       font-size: 0.75rem;
       font-weight: 500;
@@ -258,14 +191,12 @@
       color: var(--accent);
       margin-bottom: 16px;
     }
-
     h2 {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(2.2rem, 3.5vw, 3.2rem);
       line-height: 1.1;
       letter-spacing: -0.02em;
     }
-
     .section-desc {
       font-size: 1rem;
       font-weight: 300;
@@ -273,25 +204,21 @@
       color: var(--muted);
       align-self: end;
     }
-
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
       background: var(--line);
     }
-
     .service-item {
       background: var(--paper);
       padding: 40px 36px;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s;
       cursor: default;
     }
-
     .service-item:hover { background: var(--ink); color: var(--paper); }
     .service-item:hover .service-num { color: rgba(245,242,237,0.2); }
     .service-item:hover .service-desc { color: rgba(245,242,237,0.6); }
-
     .service-num {
       font-family: 'DM Serif Display', serif;
       font-size: 0.9rem;
@@ -299,7 +226,6 @@
       margin-bottom: 24px;
       transition: color 0.2s;
     }
-
     .service-title {
       font-family: 'DM Serif Display', serif;
       font-size: 1.5rem;
@@ -307,7 +233,6 @@
       letter-spacing: -0.01em;
       line-height: 1.2;
     }
-
     .service-desc {
       font-size: 0.9rem;
       font-weight: 300;
@@ -315,8 +240,6 @@
       color: var(--muted);
       transition: color 0.2s;
     }
-
-    /* ABOUT */
     .about {
       padding: 120px 48px;
       border-top: 1px solid var(--line);
@@ -325,9 +248,7 @@
       gap: 80px;
       align-items: center;
     }
-
     .about-text h2 { margin-bottom: 24px; }
-
     .about-text p {
       font-size: 1rem;
       font-weight: 300;
@@ -335,13 +256,7 @@
       color: var(--muted);
       margin-bottom: 16px;
     }
-
-    .about-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
+    .about-highlights { display: flex; flex-direction: column; gap: 2px; }
     .highlight-item {
       background: var(--ink);
       color: var(--paper);
@@ -350,9 +265,7 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .highlight-item:nth-child(2) { background: var(--accent); }
-
     .highlight-label {
       font-size: 0.8rem;
       font-weight: 300;
@@ -360,29 +273,18 @@
       text-transform: uppercase;
       opacity: 0.7;
     }
-
     .highlight-value {
       font-family: 'DM Serif Display', serif;
       font-size: 1.8rem;
       letter-spacing: -0.02em;
     }
-
-    /* CONTACT */
     .contact {
       padding: 120px 48px;
       border-top: 1px solid var(--line);
       text-align: center;
     }
-
     .contact h2 { margin-bottom: 20px; }
-
-    .contact-sub {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--muted);
-      margin-bottom: 48px;
-    }
-
+    .contact-sub { font-size: 1rem; font-weight: 300; color: var(--muted); margin-bottom: 48px; }
     .contact-email {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(1.8rem, 3vw, 2.8rem);
@@ -393,10 +295,7 @@
       padding-bottom: 4px;
       transition: color 0.2s;
     }
-
     .contact-email:hover { color: var(--accent); }
-
-    /* FOOTER */
     footer {
       padding: 32px 48px;
       border-top: 1px solid var(--line);
@@ -404,43 +303,9 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    .footer-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-    }
-
+    .footer-logo { font-family: 'DM Serif Display', serif; font-size: 1rem; }
     .footer-logo span { color: var(--accent); }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* RESPONSIVE */
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .hero { grid-template-columns: 1fr; padding: 0 24px; }
@@ -455,13 +320,11 @@
   </style>
 </head>
 <body>
-
   <nav id="nav">
     <a href="#" class="nav-logo">ELF<span>.</span>Consult</a>
-    <a href="/cdn-cgi/l/email-protection#2f4e5d414a6f4a43494c40415c5a435b014d4a" class="nav-contact">Get in touch</a>
+    <a href="mailto:arne@elfconsult.be" class="nav-contact">Get in touch</a>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <div class="hero-tag">IT Consultancy · Belgium</div>
@@ -469,7 +332,7 @@
       <p class="hero-sub">
         ELF Consult helps organisations streamline operations through automation, digital strategy, and product management expertise.
       </p>
-      <a href="/cdn-cgi/l/email-protection#6c0d1e02092c09000a0f03021f190018420e09" class="hero-cta">
+      <a href="mailto:arne@elfconsult.be" class="hero-cta">
         Start a conversation
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -485,7 +348,7 @@
         </div>
         <div class="hero-card-divider"></div>
         <div class="hero-card-stat">
-          <div class="hero-card-num">∞</div>
+          <div class="hero-card-num">&#8734;</div>
           <div class="hero-card-desc">Processes automated</div>
         </div>
         <div class="hero-card-divider"></div>
@@ -497,30 +360,26 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section class="services">
-    <div class="section-header reveal">
+    <div class="section-header">
       <div>
         <div class="section-tag">What we do</div>
         <h2>End-to-end digital expertise.</h2>
       </div>
-      <p class="section-desc">
-        From strategy to execution — we help companies move faster, waste less, and build better digital products.
-      </p>
+      <p class="section-desc">From strategy to execution — we help companies move faster, waste less, and build better digital products.</p>
     </div>
-
     <div class="services-grid">
-      <div class="service-item reveal">
+      <div class="service-item">
         <div class="service-num">01</div>
         <div class="service-title">Marketing Automation</div>
         <p class="service-desc">Design and implement automated workflows using tools like Zapier, Make, and HubSpot to eliminate repetitive tasks and scale your marketing.</p>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item">
         <div class="service-num">02</div>
         <div class="service-title">Process Automation</div>
         <p class="service-desc">Identify bottlenecks and connect your systems. We build integrations that save your team hours every week and reduce human error.</p>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item">
         <div class="service-num">03</div>
         <div class="service-title">Product Management</div>
         <p class="service-desc">Strategic guidance on building and managing digital products — from roadmap to launch, with a focus on user value and business impact.</p>
@@ -528,15 +387,14 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section class="about">
-    <div class="about-text reveal">
+    <div class="about-text">
       <div class="section-tag">About</div>
       <h2>Hands-on expertise, no overhead.</h2>
       <p>ELF Consult is an independent IT consultancy based in Belgium. With a background in supporting enterprises across automation, digital transformation, and product strategy, we bring senior-level expertise directly to your project.</p>
       <p>Currently working with Brussels Airport as Product Manager while selectively taking on consulting engagements for ambitious organisations.</p>
     </div>
-    <div class="about-highlights reveal">
+    <div class="about-highlights">
       <div class="highlight-item">
         <span class="highlight-label">Focus area</span>
         <span class="highlight-value">Automation</span>
@@ -552,26 +410,23 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="contact" id="contact">
-    <div class="section-tag reveal">Contact</div>
-    <h2 class="reveal">Let's work together.</h2>
-    <p class="contact-sub reveal">Have a project in mind? Reach out directly.</p>
-    <a href="/cdn-cgi/l/email-protection#8decffe3e8cde8e1ebeee2e3fef8e1f9a3efe8" class="contact-email reveal"><span class="__cf_email__" data-cfemail="a3c2d1cdc6e3c6cfc5c0cccdd0d6cfd78dc1c6">[email&#160;protected]</span></a>
+    <div class="section-tag">Contact</div>
+    <h2>Let's work together.</h2>
+    <p class="contact-sub">Have a project in mind? Reach out directly.</p>
+    <a href="mailto:arne@elfconsult.be" class="contact-email">arne@elfconsult.be</a>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">ELF<span>.</span>Consult</div>
-    <div class="footer-copy">© 2026 BV Elf Consult · elfconsult.be · <a href="/privacy-policy.html" style="color: inherit;">Privacy Policy</a></div>
+    <div class="footer-copy">&copy; 2026 BV Elf Consult &middot; elfconsult.be</div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Nav scroll effect
+  <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     });
-
-    // Scroll reveal
-    const observer = new IntersectionObserv
+  </script>
+</body>
+</html>
